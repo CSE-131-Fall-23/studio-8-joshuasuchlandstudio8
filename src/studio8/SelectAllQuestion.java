@@ -5,11 +5,25 @@ public class SelectAllQuestion extends MultipleChoiceQuestion {
 	public SelectAllQuestion(String prompt, String answer, String[] choices) {
 		//Hint: 1 point per choice
 		//FIXME
+		super(prompt, answer, choices.length, choices);
 	}
 	
 	public int checkAnswer(String givenAnswer) {
+		int points = super.points;
 		//FIXME Should return partial credit (if earned)!
-		return 0;
+		// Deduct points for wrong answer
+			for (int i = 0;i < givenAnswer.length(); i = i + 1) {
+				if (!answer.contains(""+givenAnswer.charAt(i))) {
+					points = points -1;
+				} 
+			}
+			// Deduct points for missing answer
+			for (int i = 0; i < answer.length(); i = i + 1) {
+					if (!givenAnswer.contains(""+this.answer.charAt(i))) {
+					points = points - 1;
+				}
+			}
+		return points;
 	}
 	
 	public static void main(String[] args) {

@@ -1,9 +1,9 @@
 package studio8;
 
 public class Question {
-	private String prompt;
-	private String answer;
-	private int points;
+	protected String prompt;
+	protected String answer;
+	protected int points;
 	
 	public Question(String prompt, String answer, int points) {
 		this.prompt = prompt;
